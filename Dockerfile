@@ -35,7 +35,7 @@ RUN cd /var && \
 RUN cd /usr/local/libpostal && \
 	./bootstrap.sh && \
 	./configure --datadir=/var/libpostal/data && \
-	make
+	make && \
 	make install
 
 ## PGSQL-POSTAL -- Bindings
@@ -43,8 +43,11 @@ RUN cd /usr/local/libpostal && \
 RUN cd /usr/lib && \
 	git clone https://github.com/pramsey/pgsql-postal.git
 
+# Download dependencies
+RUN apt-get install -y postgresql-server-dev-9.5
+
 RUN cd /usr/lib/pgsql-postal && \
-	make
+	make && \
 	make install
 
 ## Cleanup should happen here, but it won't for now.
