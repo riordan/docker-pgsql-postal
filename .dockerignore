@@ -1,0 +1,7 @@
+# Ignore textfiles in repository
+README.md
+LICENSE.md
+
+# Ignore git history
+.git
+.gitignore
