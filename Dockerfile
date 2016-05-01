@@ -50,4 +50,16 @@ RUN cd /usr/lib/pgsql-postal && \
 	make && \
 	make install
 
-## Cleanup should happen here, but it won't for now.
+## Attempting this with appropriate environment cleanup. We'll call this "security".
+## But it will be insufficient. 
+RUN apt-get remove -y \
+	postgresql-server-dev-9.5 \
+	pkg-config \
+	libtool \
+	automake \
+	autoconf \
+	git \
+	make \
+	curl
+
+run apt-get autoclean
