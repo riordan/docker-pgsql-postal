@@ -36,7 +36,8 @@ RUN cd /usr/local/libpostal && \
 	./bootstrap.sh && \
 	./configure --datadir=/var/libpostal/data && \
 	make && \
-	make install
+	make install && \
+    make check
 
 ## PGSQL-POSTAL -- Bindings
 # Download bindings - pgsql-postal - from source to /usr/lib/pgsql-postal
