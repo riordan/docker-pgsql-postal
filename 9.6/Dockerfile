@@ -42,19 +42,19 @@ RUN cd /usr/local/libpostal && \
 ## PGSQL-POSTAL -- Bindings
 # Download bindings - pgsql-postal - from source to /usr/lib/pgsql-postal
 RUN cd /usr/lib && \
-	git clone https://github.com/pramsey/pgsql-postal.git
+	git clone https://github.com/openvenues/pgsql-postal.git
 
 # Download dependencies
-RUN apt-get install -y postgresql-server-dev-9.5
+RUN apt-get install -y postgresql-server-dev-9.6
 
-RUN cd /usr/lib/pgsql-postal && \
+RUN cd /usr/lib/pgsql-postal && git checkout 1.0 &&\
 	make && \
 	make install
 
 ## Attempting this with appropriate environment cleanup. We'll call this "security".
 ## But it will be insufficient. 
 RUN apt-get remove -y \
-	postgresql-server-dev-9.5 \
+	postgresql-server-dev-9.6 \
 	pkg-config \
 	libtool \
 	automake \
